@@ -37,6 +37,9 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     const res = await api.login(email, password);
+    if (!res?.data?.token) {
+      throw new Error(res?.message || 'Server did not return a valid authentication token. Please check backend connection.');
+    }
     const { token: newToken, ...userData } = res.data;
     localStorage.setItem('equisplit_token', newToken);
     localStorage.setItem('equisplit_user', JSON.stringify(userData));
@@ -47,6 +50,9 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (name, email, password) => {
     const res = await api.register(name, email, password);
+    if (!res?.data?.token) {
+      throw new Error(res?.message || 'Server did not return a valid authentication token. Please check backend connection.');
+    }
     const { token: newToken, ...userData } = res.data;
     localStorage.setItem('equisplit_token', newToken);
     localStorage.setItem('equisplit_user', JSON.stringify(userData));
