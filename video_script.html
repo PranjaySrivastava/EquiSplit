@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EquiSplit — 3-Minute Video Demo Recording Script</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
+
+    @page {
+      size: A4;
+      margin: 14mm 16mm;
+      @bottom-right {
+        content: "Page " counter(page);
+        font-family: 'Inter', sans-serif;
+        font-size: 8pt;
+        color: #94a3b8;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: #0f172a;
+      line-height: 1.45;
+      font-size: 9.5pt;
+      background: #ffffff;
+    }
+
+    .banner {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #3730a3 100%);
+      color: #ffffff;
+      padding: 16pt 18pt;
+      border-radius: 8pt;
+      margin-bottom: 12pt;
+    }
+
+    .banner h1 {
+      font-size: 18pt;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 2pt;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .banner .sub {
+      color: #cbd5e1;
+      font-size: 10pt;
+      margin-bottom: 8pt;
+    }
+
+    .meta-bar {
+      display: flex;
+      gap: 16pt;
+      background: rgba(255, 255, 255, 0.12);
+      padding: 6pt 10pt;
+      border-radius: 5pt;
+      font-size: 8.5pt;
+    }
+
+    .meta-bar span strong {
+      color: #f8fafc;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2.5pt 6pt;
+      border-radius: 9999px;
+      font-size: 7.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-time { background: #fee2e2; color: #991b1b; }
+    .badge-visual { background: #e0e7ff; color: #3730a3; }
+    .badge-tech { background: #dcfce7; color: #166534; }
+
+    .quick-tips {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 3.5pt solid #6366f1;
+      padding: 8pt 10pt;
+      border-radius: 5pt;
+      margin-bottom: 12pt;
+      font-size: 8.5pt;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8pt;
+    }
+
+    .quick-tips div strong {
+      display: block;
+      color: #1e1b4b;
+      margin-bottom: 2pt;
+    }
+
+    .scene-card {
+      border: 1px solid #cbd5e1;
+      border-radius: 6pt;
+      margin-bottom: 10pt;
+      background: #ffffff;
+      page-break-inside: avoid;
+      overflow: hidden;
+    }
+
+    .scene-header {
+      background: #f1f5f9;
+      padding: 6pt 10pt;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #cbd5e1;
+    }
+
+    .scene-title {
+      font-weight: 700;
+      font-size: 10pt;
+      color: #0f172a;
+    }
+
+    .scene-body {
+      padding: 8pt 10pt;
+      display: grid;
+      grid-template-columns: 32% 68%;
+      gap: 10pt;
+    }
+
+    .screen-action {
+      background: #faf5ff;
+      border: 1px dashed #c084fc;
+      border-radius: 4pt;
+      padding: 6pt 8pt;
+      font-size: 8pt;
+      color: #581c87;
+    }
+
+    .screen-action strong {
+      display: block;
+      color: #6b21a8;
+      margin-bottom: 3pt;
+      font-size: 8pt;
+      text-transform: uppercase;
+    }
+
+    .speech-box {
+      font-size: 9pt;
+      color: #1e293b;
+      line-height: 1.5;
+    }
+
+    .speech-box strong.speaker {
+      display: block;
+      color: #2563eb;
+      font-size: 8pt;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 2pt;
+    }
+
+    .speech-box p {
+      margin-bottom: 4pt;
+    }
+
+    .highlight-pill {
+      background: #fef08a;
+      padding: 1pt 4pt;
+      border-radius: 3pt;
+      font-weight: 600;
+    }
+
+    .tech-note {
+      grid-column: span 2;
+      background: #f0fdf4;
+      border-top: 1px solid #dcfce7;
+      padding: 4pt 8pt;
+      font-size: 7.8pt;
+      color: #166534;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .page-break {
+      page-break-before: always;
+    }
+
+    .creds-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 6pt;
+      font-size: 8pt;
+    }
+
+    .creds-table th, .creds-table td {
+      border: 1px solid #cbd5e1;
+      padding: 4pt 6pt;
+      text-align: left;
+    }
+
+    .creds-table th { background: #f8fafc; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <!-- Header Banner -->
+  <div class="banner">
+    <h1>
+      <span>EquiSplit &mdash; Video Demo Recording Script</span>
+      <span class="badge" style="background:#22c55e; color:#052e16;">Exact 3-Minute Walkthrough</span>
+    </h1>
+    <div class="sub">Comprehensive spoken script & screen action guide for End-Term Project Submission</div>
+    <div class="meta-bar">
+      <span><strong>Presenter:</strong> Pranjay Srivastava</span>
+      <span><strong>Target Duration:</strong> 2 mins 45 secs to 3 mins</span>
+      <span><strong>Project:</strong> EquiSplit (MERN Expense Splitter)</span>
+    </div>
+  </div>
+
+  <!-- Quick Setup Instructions -->
+  <div class="quick-tips">
+    <div>
+      <strong>1. Browser Setup</strong>
+      Have <code>http://localhost:5173</code> open in full screen (or 1080p). Logged out on the Auth page.
+    </div>
+    <div>
+      <strong>2. Audio & Pace</strong>
+      Speak with energetic confidence. Keep a steady pace. Pause 1 second before clicking buttons.
+    </div>
+    <div>
+      <strong>3. Key Objective</strong>
+      Highlight the <em>Min-Cash-Flow Greedy Algorithm</em> and <em>Penny-Accurate Remainder Math</em>.
+    </div>
+  </div>
+
+  <!-- Scene 1 -->
+  <div class="scene-card">
+    <div class="scene-header">
+      <div class="scene-title">Scene 1: Introduction & The Core Problem</div>
+      <span class="badge badge-time">0:00 – 0:30 (30s)</span>
+    </div>
+    <div class="scene-body">
+      <div class="screen-action">
+        <strong>Visual Action:</strong>
+        Start on the <strong>Auth / Login page</strong> showing the hero header and the demo account login pills.
+      </div>
+      <div class="speech-box">
+        <strong class="speaker">Speak Word-for-Word:</strong>
+        <p>
+          "Hello everyone, my name is <strong>Pranjay Srivastava</strong>, and this is <strong>EquiSplit</strong> &mdash; an intelligent expense-sharing and debt-simplification platform built with the MERN stack."
+        </p>
+        <p>
+          "When roommates or travel groups share costs, typical apps create a tangled web of circular debts where everyone owes everyone, plus fractional penny rounding errors. EquiSplit solves this with mathematical precision and the <span class="highlight-pill">Min-Cash-Flow Greedy Algorithm</span>."
+        </p>
+      </div>
+      <div class="tech-note">
+        <span><strong>Rubric Covered:</strong> Problem Definition & Product Motivation</span>
+        <span><strong>Timing Check:</strong> At 0:28, click "Rahul Sharma (Organizer)" to log in.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scene 2 -->
+  <div class="scene-card">
+    <div class="scene-header">
+      <div class="scene-title">Scene 2: Dashboard & Group Architecture</div>
+      <span class="badge badge-time">0:30 – 1:00 (30s)</span>
+    </div>
+    <div class="scene-body">
+      <div class="screen-action">
+        <strong>Visual Action:</strong>
+        Show Rahul's dashboard. Point cursor to aggregate balance cards (+₹3,150.00 you are owed). Click on <strong>"Goa Roadtrip 2026"</strong> card.
+      </div>
+      <div class="speech-box">
+        <strong class="speaker">Speak Word-for-Word:</strong>
+        <p>
+          "Logging in as Rahul, the dashboard immediately displays our net financial position across all groups: total spent, amount owed to us, and amount we owe."
+        </p>
+        <p>
+          "Opening our <strong>Goa Roadtrip 2026</strong> group, notice the clean header with our custom currency and a unique <span class="highlight-pill">6-character invite code</span>: <code>GOA202</code>. Membership is strictly protected by JWT authorization."
+        </p>
+      </div>
+      <div class="tech-note">
+        <span><strong>Rubric Covered:</strong> Architecture, Authorization & Natural State Display</span>
+        <span><strong>Timing Check:</strong> Reach Group Detail by 0:58.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scene 3 -->
+  <div class="scene-card">
+    <div class="scene-header">
+      <div class="scene-title">Scene 3: Algorithmic Highlight &mdash; Min-Cash-Flow Simplification</div>
+      <span class="badge badge-time">1:00 – 1:45 (45s)</span>
+    </div>
+    <div class="scene-body">
+      <div class="screen-action">
+        <strong>Visual Action:</strong>
+        Click the <strong>"Balances & Settle Up"</strong> tab. Show the 2 simplified transfer cards. Click <strong>"Show All Raw Pairwise Debts"</strong> toggle to show the difference.
+      </div>
+      <div class="speech-box">
+        <strong class="speaker">Speak Word-for-Word:</strong>
+        <p>
+          "Now let's examine the core algorithm: <strong>Debt Simplification</strong>. In a four-person trip, pairwise expenses generated <strong>7 complex mutual debts</strong>."
+        </p>
+        <p>
+          "EquiSplit's backend executes a greedy Min-Cash-Flow algorithm in $O(N \log N)$ time. By calculating net balances and iteratively pairing the maximum debtor with the maximum creditor, it collapses those 7 chaotic transactions down to just <span class="highlight-pill">2 optimal payments</span> &mdash; saving 71% of bank transfers!"
+        </p>
+      </div>
+      <div class="tech-note">
+        <span><strong>Rubric Covered:</strong> Engineering Rigor & Algorithm Implementation (Key 20% mark)</span>
+        <span><strong>Timing Check:</strong> Switch back to Expenses tab at 1:43.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Break for Clean 2-Page Print Layout -->
+  <div class="page-break"></div>
+
+  <!-- Scene 4 -->
+  <div class="scene-card">
+    <div class="scene-header">
+      <div class="scene-title">Scene 4: Precision Multi-Split Engine & Penny Remainder Logic</div>
+      <span class="badge badge-time">1:45 – 2:20 (35s)</span>
+    </div>
+    <div class="scene-body">
+      <div class="screen-action">
+        <strong>Visual Action:</strong>
+        Click <strong>"+ Add Expense"</strong> button. Modal opens. Enter:
+        <br>&bull; Description: <code>Beachside Snacks</code>
+        <br>&bull; Amount: <code>100</code>
+        <br>Show the Equal split distribution (₹33.34 + ₹33.33 + ₹33.33). Briefly click "Exact" and "Percentage" tabs to show live error validation. Click "Save Expense".
+      </div>
+      <div class="speech-box">
+        <strong class="speaker">Speak Word-for-Word:</strong>
+        <p>
+          "Next is our precision <strong>Multi-Split Engine</strong>. Watch what happens when we split a ₹100 bill 3 ways. A naïve division gives non-terminating decimals."
+        </p>
+        <p>
+          "EquiSplit calculates shares in base paise and allocates remainder cents to ensure the sum <span class="highlight-pill">strictly equals 100.00</span> with zero rounding loss. We also support multi-payers, exact amount validation, and percentage splits that enforce an exact 100% total."
+        </p>
+      </div>
+      <div class="tech-note">
+        <span><strong>Rubric Covered:</strong> Mathematical Edge Cases, Form Validation & Reactive UI</span>
+        <span><strong>Timing Check:</strong> Modal closes and new expense appears in list by 2:18.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scene 5 -->
+  <div class="scene-card">
+    <div class="scene-header">
+      <div class="scene-title">Scene 5: Settle-Up, Confetti & Safety Guards</div>
+      <span class="badge badge-time">2:20 – 2:45 (25s)</span>
+    </div>
+    <div class="scene-body">
+      <div class="screen-action">
+        <strong>Visual Action:</strong>
+        Switch to <strong>Balances & Settle Up</strong> tab. Click <strong>"Settle"</strong> on the card (Aman &rarr; Rahul). Settle modal opens. Click <strong>"Record ₹1,000 Payment"</strong>.
+        <br><em>Watch celebratory confetti trigger!</em>
+        <br>Switch to <strong>Members tab</strong> & attempt to remove an indebted member to demonstrate the blocked action.
+      </div>
+      <div class="speech-box">
+        <strong class="speaker">Speak Word-for-Word:</strong>
+        <p>
+          "With one click on <strong>Settle</strong>, Aman pays Rahul. The transaction instantly updates the ledger, recalculated balances, and triggers a celebratory animation."
+        </p>
+        <p>
+          "Furthermore, EquiSplit enforces <strong>natural safety guards</strong>: you cannot remove a member if they have an active non-zero balance &mdash; preserving ledger integrity at all times."
+        </p>
+      </div>
+      <div class="tech-note">
+        <span><strong>Rubric Covered:</strong> Business Guards, Settlement Logic & Delightful UX</span>
+        <span><strong>Timing Check:</strong> Confetti plays at 2:32; safety guard shown at 2:42.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scene 6 -->
+  <div class="scene-card">
+    <div class="scene-header">
+      <div class="scene-title">Scene 6: Analytics, Audit Trail & Conclusion</div>
+      <span class="badge badge-time">2:45 – 3:00 (15s)</span>
+    </div>
+    <div class="scene-body">
+      <div class="screen-action">
+        <strong>Visual Action:</strong>
+        Click <strong>"Analytics"</strong> tab (show category breakdown & progress bars), then click <strong>"Audit Trail"</strong> tab (show chronological timeline of all creations and settlements).
+      </div>
+      <div class="speech-box">
+        <strong class="speaker">Speak Word-for-Word:</strong>
+        <p>
+          "Finally, our <strong>Analytics</strong> tab offers visual category spending breakdowns and Paid vs. Consumed ratios, while the immutable <strong>Audit Trail</strong> records every transaction."
+        </p>
+        <p>
+          "EquiSplit is backed by <strong>21 passed automated tests</strong>, MongoDB persistence, and a modern glassmorphic interface. Thank you!"
+        </p>
+      </div>
+      <div class="tech-note">
+        <span><strong>Rubric Covered:</strong> Audit Trail, Analytics & Professional Closing</span>
+        <span><strong>Target End Time:</strong> 2:58 to 3:00 sharp!</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Cheat Sheet Box -->
+  <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6pt; padding: 8pt 10pt; font-size: 8pt; margin-top: 8pt;">
+    <strong style="color: #0f172a; font-size: 8.5pt;">Quick Reference Demo Accounts (One-Click Pills on Login Page):</strong>
+    <table class="creds-table">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th>Role in Demo Data</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Rahul Sharma</strong></td>
+          <td><code>rahul@example.com</code></td>
+          <td><code>password123</code></td>
+          <td>Organizer & Villa Payer (+₹3,150.00 credit)</td>
+        </tr>
+        <tr>
+          <td><strong>Priya Patel</strong></td>
+          <td><code>priya@example.com</code></td>
+          <td><code>password123</code></td>
+          <td>Roommate Admin (+₹2,100.00 credit)</td>
+        </tr>
+        <tr>
+          <td><strong>Aman Verma</strong></td>
+          <td><code>aman@example.com</code></td>
+          <td><code>password123</code></td>
+          <td>Trip Member (-₹1,000.00 debt to Rahul)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>
