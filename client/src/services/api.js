@@ -1,16 +1,11 @@
-export const getApiBase = () => {
-  const custom = localStorage.getItem('equisplit_backend_url');
-  if (custom) return `${custom.replace(/\/+$/, '')}/api`;
-  const envApi = import.meta.env.VITE_API_BASE || import.meta.env.VITE_API_URL || '';
-  return envApi ? `${envApi.replace(/\/+$/, '')}/api` : '/api';
-};
+const envApi = import.meta.env.VITE_API_BASE || import.meta.env.VITE_API_URL || '';
+const API_BASE = envApi ? `${envApi.replace(/\/+$/, '')}/api` : '/api';
 
 /**
  * Standard fetch helper with automatic JWT injection, timeout, and error extraction
  */
-async function request(endpoint, options = {}, timeoutMs = 25000) {
+async function request(endpoint, options = {}, timeoutMs = 30000) {
   const token = localStorage.getItem('equisplit_token');
-  const apiBase = getApiBase();
 
   const headers = {
     'Content-Type': 'application/json',
@@ -23,7 +18,7 @@ async function request(endpoint, options = {}, timeoutMs = 25000) {
 
   let response;
   try {
-    response = await fetch(`${apiBase}${endpoint}`, {
+    response = await fetch(`${API_BASE}${endpoint}`, {
       ...options,
       headers,
       signal: controller.signal,
@@ -32,11 +27,11 @@ async function request(endpoint, options = {}, timeoutMs = 25000) {
     clearTimeout(timeoutId);
     if (netErr.name === 'AbortError') {
       throw new Error(
-        'Connection timed out. If your backend is hosted on Render free tier, it may be waking up from sleep (~40s). Please wait a moment and try again.'
+        'Request timed out. If your backend is waking up, please try again in a few moments.'
       );
     }
     throw new Error(
-      `Cannot connect to backend server (${apiBase}). If on Vercel, please set VITE_API_URL or use the Backend URL setting below.`
+      `Cannot connect to backend server (${API_BASE}). Please verify backend is running.`
     );
   } finally {
     clearTimeout(timeoutId);
@@ -46,7 +41,7 @@ async function request(endpoint, options = {}, timeoutMs = 25000) {
   const contentType = response.headers.get('content-type') || '';
   if (!contentType.includes('application/json')) {
     throw new Error(
-      'Backend returned HTML instead of JSON. Your frontend cannot reach your backend. Please set your Render Backend URL in Vercel settings or use the Backend URL configuration below.'
+      'Backend returned HTML instead of JSON. The API endpoint could not be reached.'
     );
   }
 

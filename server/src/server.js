@@ -21,13 +21,31 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(morgan('dev'));
 }
 
-// Health check endpoint
+const mongoose = require('mongoose');
+
+// Health check endpoint with database status
 app.get('/api/health', (req, res) => {
+  const dbState = mongoose.connection.readyState;
+  const dbStatusMap = { 0: 'disconnected', 1: 'connected', 2: 'connecting', 3: 'disconnecting' };
   res.json({
     status: 'ok',
     app: 'EquiSplit API',
+    database: dbStatusMap[dbState] || 'unknown',
+    databaseConnected: dbState === 1,
     timestamp: new Date().toISOString(),
   });
+});
+
+// Database readiness guard: Fail fast with clear error instead of hanging
+app.use('/api', (req, res, next) => {
+  if (req.path === '/health') return next();
+  if (mongoose.connection.readyState !== 1) {
+    return res.status(503).json({
+      success: false,
+      message: 'Database is connecting or unreachable. Please verify that MONGODB_URI has the correct password and 0.0.0.0/0 is enabled in MongoDB Atlas Network Access.',
+    });
+  }
+  next();
 });
 
 // Mount Routes
