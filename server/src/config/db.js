@@ -44,7 +44,7 @@ const connectDB = async () => {
       return conn;
     } catch (memErr) {
       console.error(`Failed to start in-memory MongoDB fallback: ${memErr.message}`);
-      process.exit(1);
+      throw memErr;
     }
   }
 };

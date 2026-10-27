@@ -69,10 +69,15 @@ const { autoSeedIfEmpty } = require('./services/autoSeeder');
 
 // Connect to Database and start server
 const startServer = async () => {
-  await connectDB();
-  await autoSeedIfEmpty();
-  app.listen(PORT, () => {
+  app.listen(PORT, async () => {
     console.log(`🚀 EquiSplit Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+    try {
+      await connectDB();
+      await autoSeedIfEmpty();
+    } catch (err) {
+      console.error('⚠️ MongoDB connection warning:', err.message);
+      console.log('Server is alive and listening. Please verify MONGODB_URI in Render environment variables.');
+    }
   });
 };
 
