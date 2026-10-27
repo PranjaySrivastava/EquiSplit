@@ -1,4 +1,5 @@
-const API_BASE = '/api';
+const envApi = import.meta.env.VITE_API_BASE || import.meta.env.VITE_API_URL || '';
+const API_BASE = envApi ? `${envApi.replace(/\/+$/, '')}/api` : '/api';
 
 /**
  * Standard fetch helper with automatic JWT injection and error extraction

@@ -46,6 +46,20 @@ app.use('/api/groups/:groupId/settlements', settlementRoutes);
 app.use('/api/groups/:groupId', analyticsRoutes);
 app.use('/api/groups/:groupId', activityRoutes);
 
+const path = require('path');
+
+// Serve static frontend in production
+if (process.env.NODE_ENV === 'production') {
+  const clientDistPath = path.join(__dirname, '../../client/dist');
+  app.use(express.static(clientDistPath));
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api')) {
+      return next();
+    }
+    res.sendFile(path.join(clientDistPath, 'index.html'));
+  });
+}
+
 // Error Handling Middleware
 app.use(errorHandler);
 
