@@ -245,3 +245,6 @@ CLIENT_URL=http://localhost:5173
 - [x] **User Experience & Reliability (10%):** Modern glassmorphism UI, confetti animations, live remaining balance indicators, loading & error states.
 - [x] **Code Quality & Project Structure (10%):** Modular controllers, middleware, services, git version control, and clean separation of concerns.
 - [x] **Deployment & Documentation (10%):** Comprehensive documentation with local setup, environment variables, demo accounts, and deployment guides.
+
+## 12. Live video link:-
+https://drive.google.com/file/d/1zcnmeQCPKiJRtjFbxMAIvPOi3oggFolu/view?usp=sharing
